@@ -100,17 +100,19 @@ int main() {
     m3.insert("Japan", 89);
     m3.insert("Ian", 17);
     
+    m1.erase("Fred");
+    m1.erase("Lucy");
 //    merge(m1, m2, m3);
     
 //    m3.dump();
 //    reassign(m1, m3);
 //    m3.dump();
 //    m1.dump();
-    if (merge(m1, m2, m3))
-        cout << "Successfully merged!" << endl;
-    else
-        cout << "Did not merge" << endl;
+//    if (merge(m1, m2, m3))
+//        cout << "Successfully merged!" << endl;
+//    else
+//        cout << "Did not merge" << endl;
     
-    cout << m3.size() << endl;
-    m3.dump();
+//    cout << m3.size() << endl;
+//    m3.dump();
 }

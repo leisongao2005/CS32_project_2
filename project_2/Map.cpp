@@ -43,7 +43,6 @@ Map::Map(const Map& ref) {
         }
         m_p = m_p->next;
     }
-    m_tail = m_p;
 }
 
 Map& Map::operator=(const Map& rhs) {
