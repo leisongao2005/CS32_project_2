@@ -17,11 +17,13 @@ bool merge(const Map& m1, const Map& m2, Map& result) {
         ValueType value;
         result.get(0, key, value);
         result.erase(key);
-        
     }
+
     
-//    cout << "empty map" << endl;
-//    result.dump();
+    cout << "empty map" << endl;
+    result.dump();
+    cout << result.size() << endl;
+    
     for (int i = 0; i < m1.size(); i ++) {
         KeyType key;
         ValueType value;
@@ -93,6 +95,10 @@ int main() {
 
     m2.insert("Lucy", 789);
     m2.insert("Ricky", 321);
+    
+    m3.insert("China", 981);
+    m3.insert("Japan", 89);
+    m3.insert("Ian", 17);
     
 //    merge(m1, m2, m3);
     

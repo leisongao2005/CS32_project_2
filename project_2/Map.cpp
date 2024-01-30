@@ -23,13 +23,28 @@ Map::~Map() {
         delete delp;
         delp = p;
     }
-//    delete delp;
+    delete delp->next;
+    delete delp;
 }
 
 Map::Map(const Map& ref) {
-    m_head = ref.m_head;
-    m_tail = ref.m_tail;
     m_size = ref.m_size;
+    m_head = new Node;
+    Node* m_p = m_head;
+    for(Node* p = ref.m_head; p != nullptr; p = p->next) {
+        if (m_p == m_head) { // avoids undefined behavior of copying unitialized values of the dummy node
+            m_p->next = p->next;
+            m_p->previous = p->previous;
+        }
+        else {
+            m_p->key = p->key;
+            m_p->value = p->value;
+            m_p->next = p->next;
+            m_p->previous = p->previous;
+        }
+        m_p = m_p->next;
+    }
+    m_tail = m_p;
 }
 
 Map& Map::operator=(const Map& rhs) {
@@ -202,6 +217,9 @@ bool Map::get(int i, KeyType& key, ValueType& value) const {
         p = p->next;
         pos ++;
     }
+    
+    if (p == nullptr)
+        return false;
     
     key = p->key;
     value = p->value;
