@@ -89,49 +89,12 @@ int main() {
 //    reassign(m1, m3);
 //    m3.dump();
 //    m1.dump();
-//    if (merge(m1, m2, m3))
-//        cout << "Successfully merged!" << endl;
-//    else
-//        cout << "Did not merge" << endl;
-//    
-//    cout << m3.size() << endl;
-//    m3.dump();
-    
-    while (m3.size() > 0) {
-        KeyType key;
-        ValueType value;
-        m3.get(0, key, value);
-        m3.erase(key);
-    }
-    
-    for (int i = 0; i < m1.size(); i ++) {
-        KeyType key;
-        ValueType value;
-        m1.get(i, key, value);
-        m3.insert(key, value);
-    }
-    
-    bool dupes = false;
-    for(int i = 0; i < m2.size(); i ++) {
-        KeyType key;
-        ValueType value;
-        m2.get(i, key, value);
-        ValueType tempValue;
-        m3.get(key, tempValue);
-        if (!m3.contains(key)) { // map does not contain value
-            m3.insert(key, value);
-        }
-        else if (tempValue != value) {
-            m3.erase(key);
-            dupes = true;
-        }
-        else
-            m3.insert(key, value);
-        
-    }
-    
-    if (dupes)
-        cout << "Duplicates found!" << endl;
+    if (merge(m1, m2, m3))
+        cout << "Successfully merged!" << endl;
     else
-        cout << "All Clear!" << endl;
+        cout << "Did not merge" << endl;
+    
+    cout << m3.size() << endl;
+    m3.dump();
+
 }
