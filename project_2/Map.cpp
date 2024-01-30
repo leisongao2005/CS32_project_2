@@ -30,7 +30,8 @@ Map::Map(const Map& ref) {
     m_size = ref.m_size;
     m_head = new Node;
     Node* m_p = m_head;
-    for(Node* p = ref.m_head; p != nullptr; p = p->next) {
+    m_head->previous = nullptr;
+    for(Node* p = ref.m_head->next; p != nullptr; p = p->next) {
         Node* tempNode = new Node;
         m_p->next = tempNode;
         tempNode->key = p->key;
