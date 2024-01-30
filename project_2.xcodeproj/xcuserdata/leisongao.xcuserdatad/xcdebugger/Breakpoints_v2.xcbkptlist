@@ -14,8 +14,8 @@
             filePath = "project_2/main.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "150"
-            endingLineNumber = "150"
+            startingLineNumber = "137"
+            endingLineNumber = "137"
             landmarkName = "main()"
             landmarkType = "9">
          </BreakpointContent>
@@ -30,8 +30,8 @@
             filePath = "project_2/main.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "151"
-            endingLineNumber = "151">
+            startingLineNumber = "138"
+            endingLineNumber = "138">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -44,8 +44,8 @@
             filePath = "project_2/main.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "149"
-            endingLineNumber = "149"
+            startingLineNumber = "98"
+            endingLineNumber = "98"
             landmarkName = "main()"
             landmarkType = "9">
          </BreakpointContent>
@@ -60,8 +60,8 @@
             filePath = "project_2/main.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "143"
-            endingLineNumber = "143"
+            startingLineNumber = "92"
+            endingLineNumber = "92"
             landmarkName = "main()"
             landmarkType = "9">
          </BreakpointContent>
@@ -76,8 +76,8 @@
             filePath = "project_2/main.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "148"
-            endingLineNumber = "148"
+            startingLineNumber = "97"
+            endingLineNumber = "97"
             landmarkName = "main()"
             landmarkType = "9">
          </BreakpointContent>
