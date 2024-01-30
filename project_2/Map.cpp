@@ -63,10 +63,6 @@ bool Map::empty() const {
 }
 
 bool Map::insert(const KeyType& key, const ValueType& value) {
-    Node* tempNode = new Node;
-    tempNode->key = key;
-    tempNode->value = value;
-    
     Node* p;
     for(p = m_head->next; p != nullptr; p = p->next) {
         if (p->key == key)
@@ -74,6 +70,10 @@ bool Map::insert(const KeyType& key, const ValueType& value) {
         else if (p->key > key)
             break;
     }
+    
+    Node* tempNode = new Node;
+    tempNode->key = key;
+    tempNode->value = value;
     
     if (p == nullptr) {
         if (m_size == 0) {   // adding first element
@@ -113,24 +113,19 @@ bool Map::update(const KeyType& key, const ValueType& value) {
 }
 
 bool Map::insertOrUpdate(const KeyType& key, const ValueType& value) {
-    for (Node* p = m_head->next; p != nullptr; p = p->next) {
+    Node* p;
+    for(p = m_head->next; p != nullptr; p = p->next) {
         if (p->key == key) {
             p->value = value;
             return true;
         }
+        else if (p->key > key)
+            break;
     }
     
     Node* tempNode = new Node;
     tempNode->key = key;
     tempNode->value = value;
-    
-    Node* p;
-    for(p = m_head->next; p != nullptr; p = p->next) {
-        if (p->key == key)
-            return false;
-        else if (p->key > key)
-            break;
-    }
     
     if (p == nullptr) {
         if (m_size == 0) {   // adding first element
