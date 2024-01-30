@@ -39,8 +39,8 @@ bool merge(const Map& m1, const Map& m2, Map& result) {
             result.erase(key);
             dupes = true;
         }
-        else
-            result.insert(key, value);
+//        else
+//            result.insert(key, value);
         
     }
     
@@ -74,15 +74,15 @@ int main() {
 
 //    m1.dump();
 
-    m2.insert("Lucy", 789);
+    m2.insert("Lucy", 123);
     m2.insert("Ricky", 321);
     
     m3.insert("China", 981);
     m3.insert("Japan", 89);
     m3.insert("Ian", 17);
-    
-    m1.erase("Fred");
-    m1.erase("Lucy");
+//    
+//    m1.erase("Fred");
+//    m1.erase("Lucy");
 //    merge(m1, m2, m3);
     
 //    m3.dump();
