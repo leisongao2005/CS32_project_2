@@ -11,7 +11,12 @@
 #include <stdio.h>
 #include <string>
 using KeyType = std::string;
-using ValueType = int;
+using ValueType = double;
+
+class Map;
+
+bool merge(const Map& m1, const Map& m2, Map& result);
+void reassign(const Map& m, Map& result);
 
 class Map
 {
@@ -44,4 +49,5 @@ class Map
         int m_size;
     
 };
+
 #endif /* Map_hpp */
