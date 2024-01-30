@@ -14,8 +14,30 @@ Map::Map() {
     m_tail = m_head;
     m_head->next = nullptr;
     m_head->previous = nullptr;
-    
     m_size = 0;
+}
+
+Map::~Map() {
+    Node* delp = m_head;
+    for(Node* p = m_head->next; p != nullptr; p = p->next) {
+        delete delp;
+        delp = p;
+    }
+//    delete delp;
+}
+
+Map::Map(const Map& ref) {
+    m_head = ref.m_head;
+    m_tail = ref.m_tail;
+    m_size = ref.m_size;
+}
+
+Map& Map::operator=(const Map& rhs) {
+    if (this != &rhs) {
+        Map temp(rhs);
+        swap(temp);
+    }
+    return *this;
 }
 
 int Map::size() const{
@@ -91,16 +113,34 @@ bool Map::insertOrUpdate(const KeyType& key, const ValueType& value) {
     
     Node* p;
     for(p = m_head->next; p != nullptr; p = p->next) {
-        if (p->key > key)
+        if (p->key == key)
+            return false;
+        else if (p->key > key)
             break;
     }
     
-    tempNode->next = p->next;
-    tempNode->previous = p;
-    
-    p->previous->next = tempNode;
-    p->next->previous = tempNode;
-    
+    if (p == nullptr) {
+        if (m_size == 0) {   // adding first element
+            tempNode->next = nullptr;
+            tempNode->previous = m_head;
+            m_head->next = tempNode;
+            m_tail = tempNode;
+        }
+        else { // adding element to end of array
+            tempNode->next = nullptr;
+            tempNode->previous = m_tail;
+            
+            m_tail->next = tempNode;
+            m_tail = tempNode;
+        }
+    }
+    else {
+        tempNode->next = p;
+        tempNode->previous = p->previous;
+        
+        p->previous->next = tempNode;
+        p->previous = tempNode;
+    }
     m_size ++;
     
     return true;
@@ -111,9 +151,21 @@ bool Map::erase(const KeyType& key) {
     for(Node* p = m_head->next; p != nullptr; p = p->next) {
         if (p->key == key) {
             Node* tempNode = p;
-            p->previous->next = p->next;
-            p->next->previous = p->previous;
-            delete tempNode->previous->next;
+            
+            if (p->next == nullptr){
+                if (m_size == 0)
+                    return false;
+                p->previous->next = nullptr;
+                m_tail = p->previous;
+                delete tempNode->previous->next;
+            }
+            else {
+                p->previous->next = p->next;
+                p->next->previous = p->previous;
+//                delete tempNode->previous->next;
+                delete tempNode;
+            }
+            m_size --;
             return true;
         }
     }

@@ -11,12 +11,15 @@
 #include <stdio.h>
 #include <string>
 using KeyType = std::string;
-using ValueType = double;
+using ValueType = int;
 
 class Map
 {
     public:
         Map();
+        Map(const Map& ref);
+        ~Map();
+        Map& operator=(const Map& rhs);
         bool empty() const;
         int size() const;
         bool insert(const KeyType& key, const ValueType& value);
