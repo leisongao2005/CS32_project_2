@@ -23,7 +23,6 @@ Map::~Map() {
         delete delp;
         delp = p;
     }
-    delete delp->next;
     delete delp;
 }
 
@@ -172,7 +171,7 @@ bool Map::erase(const KeyType& key) {
                     return false;
                 p->previous->next = nullptr;
                 m_tail = p->previous;
-                delete tempNode->previous->next;
+                delete tempNode;
             }
             else {
                 p->previous->next = p->next;
