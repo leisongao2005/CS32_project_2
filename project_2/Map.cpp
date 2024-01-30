@@ -31,15 +31,14 @@ Map::Map(const Map& ref) {
     m_head = new Node;
     Node* m_p = m_head;
     for(Node* p = ref.m_head; p != nullptr; p = p->next) {
-        if (m_p == m_head) { // avoids undefined behavior of copying unitialized values of the dummy node
-            m_p->next = p->next;
-            m_p->previous = p->previous;
-        }
-        else {
-            m_p->key = p->key;
-            m_p->value = p->value;
-            m_p->next = p->next;
-            m_p->previous = p->previous;
+        Node* tempNode = new Node;
+        m_p->next = tempNode;
+        tempNode->key = p->key;
+        tempNode->value = p->value;
+        tempNode->previous = m_p;
+        tempNode->next = nullptr;
+        if (p->next == nullptr) { // at end of list to be copied
+            m_tail = tempNode;
         }
         m_p = m_p->next;
     }
